@@ -2,23 +2,25 @@
 
 <p class="lead">Descripción de los datos que hay que meter aquí dentro</p>
 
-<div class="form-group" [class.has-danger]="isValid(myForm.controls['name'])">
-  <label class="form-control-label" for="name">Name</label>
-  <input type="text"
-         class="form-control" id="name" placeholder="Your Name"
-         [class.form-control-danger]="isValid(myForm.controls['name'])"
-         [formControl]="myForm.controls['name']">
+<!--<div [formGroup]="shippingForm">
+  <div class="form-group" [class.has-danger]="shippingForm.controls.name.valid">
+    <label class="form-control-label" for="name">Name</label>
+    <input type="text"
+           class="form-control" id="name" placeholder="Your Name"
+           [class.form-control-danger]="shippingForm.controls.name.valid"
+           [formControl]="shippingForm.controls.name">
 
-  <div class="form-control-feedback" *ngIf="isRequired(myForm.controls['name'])">Sorry, this field is mandatory</div>
+    <div class="form-control-feedback" *ngIf="!shippingForm.controls['name'].valid">Sorry, this field is mandatory</div>
+  </div>
+
+  <div class="form-group">
+    <label for="name">Surname</label>
+    <input type="text"
+           class="form-control" id="surname" placeholder="Your Surname"
+           [formControl]="shippingForm.controls['surname']">
+  </div>
 </div>
-
-<div class="form-group">
-  <label for="name">Surname</label>
-  <input type="text"
-         class="form-control" id="surname" placeholder="Your Surname"
-         [formControl]="myForm.controls['surname']">
-</div>
-
+<!--
 <div class="form-group" [class.has-danger]="isValid(myForm.controls['mail'])">
   <label class="form-control-label" for="name">Email</label>
   <input type="email"
@@ -39,7 +41,7 @@
   <div class="form-control-feedback" *ngIf="isRequired(myForm.controls['mailConfirmation'])">Sorry, this field is
     mandatory
   </div>
-  <!--<div class="form-control-feedback" *ngIf="myForm.controls['mailConfirmation'].hasError('emailMatch')">Sorry, both emails have to match!</div>-->
+  <!--<div class="form-control-feedback" *ngIf="myForm.controls['mailConfirmation'].hasError('emailMatch')">Sorry, both emails have to match!</div>
 </div>
 
 <div class="form-group" [class.has-danger]="isValid(myForm.controls['phone'])">
@@ -55,8 +57,5 @@
   </div>
 </div>
 
-<p>
-  <button type="submit" class="btn btn-lg btn-success">Order!</button>
-</p>
 
-
+-->

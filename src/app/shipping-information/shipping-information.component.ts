@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Input} from "@angular/core";
 import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 
 /*function emailMatchValidator(mailConfirmation: FormControl): {[s: string]: boolean} {
@@ -9,11 +9,11 @@ import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
   return {'emailMatch': false};
 }*/
 
-function postalPhoneValidator(phone: FormControl): {[s: string]: boolean} {
+/*function postalPhoneValidator(phone: FormControl): {[s: string]: boolean} {
   if( !phone.value.match(/\d{9}/)){
     return {invalidPhone: true};
   }
-}
+}*/
 
 @Component({
   selector: 'app-shipping-information',
@@ -21,28 +21,14 @@ function postalPhoneValidator(phone: FormControl): {[s: string]: boolean} {
   styleUrls: ['./shipping-information.component.css']
 })
 export class ShippingInformationComponent implements OnInit {
-  myForm: FormGroup;
-
-  constructor(fb: FormBuilder) {
-    this.myForm = fb.group({
-      'name': ['', Validators.required],
-      'surname': [''],
-      'mail': ['', Validators.required],
-      'mailConfirmation': ['', Validators.required],
-      'phone': ['', Validators.compose([Validators.required, postalPhoneValidator])],
-      'address': ['', Validators.required],
-      'postalCode': ['', Validators.required],
-      'city': ['', Validators.required]
-    });
-  }
+  @Input('group')
+  public shippingForm: FormGroup;
 
   ngOnInit() {
+    console.log(this.shippingForm.value.controls);
   }
 
-  onSubmit(form: any): void {
-    console.log('Value submitted: ', form);
-  }
-
+/*
   isValid(control: FormControl): boolean {
     return !control.valid && control.touched;
   }
@@ -50,5 +36,6 @@ export class ShippingInformationComponent implements OnInit {
   isRequired(control: FormControl): boolean {
     return control.hasError("required") && control.touched;
   }
+*/
 
 }

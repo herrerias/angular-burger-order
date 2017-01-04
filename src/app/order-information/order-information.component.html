@@ -1,6 +1,7 @@
 <form [formGroup]="myForm" novalidate
-      (ngSubmit)="onSubmit(myForm.value)">
-  <div class="jumbotron">
+      (ngSubmit)="save(myForm)">
+
+  <!--<div class="jumbotron">
     <app-shipping-information></app-shipping-information>
   </div>
 
@@ -14,7 +15,44 @@
 
   <div class="row marketing">
     <app-product-composition></app-product-composition>
+  </div>-->
+
+  <div class="jumbotron">
+
+    <div class="form-group" formGroupName="shippingInformation">
+      <label for="name">Name</label>
+      <input type="text" id="name" class="form-control" formControlName="name">
+      <small [hidden]="myForm.controls.shippingInformation.controls.name.valid" class="text-danger">
+        Street required
+      </small>
+    </div>
+
+    <div class="form-group" formGroupName="shippingInformation">
+      <label for="surname">Surname</label>
+      <input type="text" id="surname" class="form-control" formControlName="surname">
+    </div>
+    <!--<app-shipping-information [group]="myForm.controls.shippingInformation"></app-shipping-information>-->
+    <!--<div formGroupName="shippingInformation">
+      <div class="form-group" [class.has-danger]="myForm.controls.shippingInformation.name.valid">
+        <label class="form-control-label" for="name">Name</label>
+        <input type="text"
+               class="form-control" id="name" placeholder="Your Name"
+               [class.form-control-danger]="!myForm.controls.shippingInformation.name.valid"
+               formControlName="name">
+
+        <div class="form-control-feedback" *ngIf="!myForm.controls.shippingInformation.name.valid">Sorry, this field is mandatory</div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Surname</label>
+        <input type="text"
+               class="form-control" id="surname" placeholder="Your Surname"
+               formControlName="surname">
+      </div>
+    </div>-->
   </div>
+
+  <button type="submit" class="btn btn-lg btn-success" [disabled]="!myForm.valid">Submit</button>
 </form>
 
 
