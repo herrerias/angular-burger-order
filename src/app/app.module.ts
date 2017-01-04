@@ -12,6 +12,7 @@ import { ProductSizeComponent } from './product-size/product-size.component';
 import { ProductCompositionComponent } from './product-composition/product-composition.component';
 import { AppHeaderComponent } from './app-header/app-header.component';
 import { AppFooterComponent } from './app-footer/app-footer.component';
+import { OrderInformationComponent } from './order-information/order-information.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { AppFooterComponent } from './app-footer/app-footer.component';
     ProductSizeComponent,
     ProductCompositionComponent,
     AppHeaderComponent,
-    AppFooterComponent
+    AppFooterComponent,
+    OrderInformationComponent
   ],
   imports: [
     BrowserModule,

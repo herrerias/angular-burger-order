@@ -1,0 +1,20 @@
+<form [formGroup]="myForm" novalidate
+      (ngSubmit)="onSubmit(myForm.value)">
+  <div class="jumbotron">
+    <app-shipping-information></app-shipping-information>
+  </div>
+
+  <div class="row marketing">
+    <app-product-picture></app-product-picture>
+  </div>
+
+  <div class="row marketing">
+    <app-product-size></app-product-size>
+  </div>
+
+  <div class="row marketing">
+    <app-product-composition></app-product-composition>
+  </div>
+</form>
+
+

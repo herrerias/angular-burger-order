@@ -1,59 +1,62 @@
 <h1 class="display-5">Shipping Information</h1>
-<form [formGroup]="myForm"
-      (ngSubmit)="onSubmit(myForm.value)">
-  <p class="lead">Descripción de los datos que hay que meter aquí dentro</p>
 
-  <div class="form-group" [class.has-danger]="isValid(myForm.controls['name'])">
-    <label class="form-control-label" for="name">Name</label>
-    <input type="text"
-           class="form-control" id="name" placeholder="Your Name"
-           [class.form-control-danger]="isValid(myForm.controls['name'])"
-           [formControl]="myForm.controls['name']">
+<p class="lead">Descripción de los datos que hay que meter aquí dentro</p>
 
-    <div class="form-control-feedback" *ngIf="isRequired(myForm.controls['name'])">Sorry, this field is mandatory</div>
+<div class="form-group" [class.has-danger]="isValid(myForm.controls['name'])">
+  <label class="form-control-label" for="name">Name</label>
+  <input type="text"
+         class="form-control" id="name" placeholder="Your Name"
+         [class.form-control-danger]="isValid(myForm.controls['name'])"
+         [formControl]="myForm.controls['name']">
+
+  <div class="form-control-feedback" *ngIf="isRequired(myForm.controls['name'])">Sorry, this field is mandatory</div>
+</div>
+
+<div class="form-group">
+  <label for="name">Surname</label>
+  <input type="text"
+         class="form-control" id="surname" placeholder="Your Surname"
+         [formControl]="myForm.controls['surname']">
+</div>
+
+<div class="form-group" [class.has-danger]="isValid(myForm.controls['mail'])">
+  <label class="form-control-label" for="name">Email</label>
+  <input type="email"
+         class="form-control" id="mail" placeholder="Your email"
+         [class.form-control-danger]="isValid(myForm.controls['mail'])"
+         [formControl]="myForm.controls['mail']">
+
+  <div class="form-control-feedback" *ngIf="isRequired(myForm.controls['mail'])">Sorry, this field is mandatory</div>
+</div>
+
+<div class="form-group" [class.has-danger]="isValid(myForm.controls['mailConfirmation'])">
+  <label class="form-control-label" for="name">Email Confirmation</label>
+  <input type="email"
+         class="form-control" id="mailConfirmation" placeholder="Your email"
+         [class.form-control-danger]="isValid(myForm.controls['mailConfirmation'])"
+         [formControl]="myForm.controls['mailConfirmation']">
+
+  <div class="form-control-feedback" *ngIf="isRequired(myForm.controls['mailConfirmation'])">Sorry, this field is
+    mandatory
   </div>
+  <!--<div class="form-control-feedback" *ngIf="myForm.controls['mailConfirmation'].hasError('emailMatch')">Sorry, both emails have to match!</div>-->
+</div>
 
-  <div class="form-group">
-    <label for="name">Surname</label>
-    <input type="text"
-           class="form-control" id="surname" placeholder="Your Surname"
-           [formControl]="myForm.controls['surname']">
+<div class="form-group" [class.has-danger]="isValid(myForm.controls['phone'])">
+  <label class="form-control-label" for="name">Phone</label>
+  <input type="text"
+         class="form-control" id="phone" placeholder="Your phone"
+         [class.form-control-danger]="isValid(myForm.controls['phone'])"
+         [formControl]="myForm.controls['phone']">
+
+  <div class="form-control-feedback" *ngIf="isRequired(myForm.controls['phone'])">Sorry, this field is mandatory</div>
+  <div class="form-control-feedback" *ngIf="myForm.controls['phone'].hasError('invalidPhone')">Please, phone with 9
+    digits ;D
   </div>
+</div>
 
-  <div class="form-group" [class.has-danger]="isValid(myForm.controls['mail'])">
-    <label class="form-control-label" for="name">Email</label>
-    <input type="email"
-           class="form-control" id="mail" placeholder="Your email"
-           [class.form-control-danger]="isValid(myForm.controls['mail'])"
-           [formControl]="myForm.controls['mail']">
+<p>
+  <button type="submit" class="btn btn-lg btn-success">Order!</button>
+</p>
 
-    <div class="form-control-feedback" *ngIf="isRequired(myForm.controls['mail'])">Sorry, this field is mandatory</div>
-  </div>
-
-  <div class="form-group" [class.has-danger]="isValid(myForm.controls['mailConfirmation'])">
-    <label class="form-control-label" for="name">Email Confirmation</label>
-    <input type="email"
-           class="form-control" id="mailConfirmation" placeholder="Your email"
-           [class.form-control-danger]="isValid(myForm.controls['mailConfirmation'])"
-           [formControl]="myForm.controls['mailConfirmation']">
-
-    <div class="form-control-feedback" *ngIf="isRequired(myForm.controls['mailConfirmation'])">Sorry, this field is mandatory</div>
-    <!--<div class="form-control-feedback" *ngIf="myForm.controls['mailConfirmation'].hasError('emailMatch')">Sorry, both emails have to match!</div>-->
-  </div>
-
-  <div class="form-group" [class.has-danger]="isValid(myForm.controls['phone'])">
-    <label class="form-control-label" for="name">Phone</label>
-    <input type="text"
-           class="form-control" id="phone" placeholder="Your phone"
-           [class.form-control-danger]="isValid(myForm.controls['phone'])"
-           [formControl]="myForm.controls['phone']">
-
-    <div class="form-control-feedback" *ngIf="isRequired(myForm.controls['phone'])">Sorry, this field is mandatory</div>
-    <div class="form-control-feedback" *ngIf="myForm.controls['phone'].hasError('invalidPhone')">Please, phone with 9 digits ;D</div>
-  </div>
-
-  <p>
-    <button type="submit" class="btn btn-lg btn-success">Order!</button>
-  </p>
-</form>
 
