@@ -1,0 +1,17 @@
+<p>
+  <label *ngFor="let composition of compositions"
+         class="custom-control custom-checkbox">
+    <input type="checkbox"
+           [attr.name]="composition"
+           [attr.value]="composition"
+           (blur)="onBlur(composition)"
+           (change)="updateComposition(composition)"
+           (focus)="onFocus(composition)"
+           [checked]="value.includes(composition)"
+           class="custom-control-input"/>
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">{{ capitalise(composition) }}</span>
+
+    <!--<span class="pizza-composition__icon pizza-composition__icon--{{ composition }}"></span>-->
+  </label>
+</p>

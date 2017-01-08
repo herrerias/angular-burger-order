@@ -1,0 +1,15 @@
+<div *ngFor="let product of products; let i = index;">
+    <h3>
+      Product {{i}}
+    </h3>
+
+    <div *ngFor="let composition of product.compositions">
+      <i class="fa fa-plus"></i> {{composition}}
+    </div>
+</div>
+
+<!--
+<button type="submit" class="summary__button" [disabled]="order.invalid">
+  Place order
+</button>
+-->

@@ -1,0 +1,13 @@
+<p>
+  <label *ngFor="let size of sizes; let i = index;"
+    class="custom-control custom-radio">
+    <input type="radio"
+           name="size"
+           [value]="size"
+           (change)="onChange(size)"
+           [checked]="value === size"
+           class="custom-control-input">
+    <span class="custom-control-indicator"></span>
+    <span class="custom-control-description">{{size}} ({{prices[i] | currency:'EUR':true}})</span>
+  </label>
+</p>

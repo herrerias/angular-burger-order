@@ -1,0 +1,35 @@
+<h4>
+  Choose your products
+
+  <button class="btn btn-primary btn-sm"
+          (click)="addProduct()">
+    <i class="fa fa-plus"></i>
+  </button>
+</h4>
+
+<div *ngFor="let product of products.controls; let i=index" class="card">
+  <div class="card-header"
+       (click)="openProduct(i)">
+    <i class="fa"
+       [class.fa-chevron-right]="productOpened !== i"
+       [class.fa-chevron-down]="productOpened === i"></i>
+    Product {{i + 1}}
+    <i class="fa fa-trash-o pull-right"
+       *ngIf="products.controls.length > 1"
+       (click)="removeProduct(i)"></i>
+  </div>
+
+  <div class="card-block"
+       [hidden]="productOpened !== i"
+       [formGroup]="product">
+    <h4 class="card-title">Select your burger size</h4>
+    <p class="card-text">
+      <app-product-size formControlName="size"></app-product-size>
+    </p>
+    <h4 class="card-title">Select your burger ingredients</h4>
+    <p class="card-text">
+      <app-product-composition formControlName="compositions"></app-product-composition>
+    </p>
+  </div>
+</div>
+
