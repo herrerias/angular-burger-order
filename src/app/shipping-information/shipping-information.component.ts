@@ -25,10 +25,9 @@ export class ShippingInformationComponent implements OnInit {
   public shippingForm: FormGroup;
 
   ngOnInit() {
-    console.log(this.shippingForm.value.controls);
   }
 
-/*
+
   isValid(control: FormControl): boolean {
     return !control.valid && control.touched;
   }
@@ -36,6 +35,5 @@ export class ShippingInformationComponent implements OnInit {
   isRequired(control: FormControl): boolean {
     return control.hasError("required") && control.touched;
   }
-*/
 
 }

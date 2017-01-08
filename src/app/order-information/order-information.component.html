@@ -18,41 +18,45 @@
   </div>-->
 
   <div class="jumbotron">
-
-    <div class="form-group" formGroupName="shippingInformation">
-      <label for="name">Name</label>
-      <input type="text" id="name" class="form-control" formControlName="name">
-      <small [hidden]="myForm.controls.shippingInformation.controls.name.valid" class="text-danger">
-        Street required
-      </small>
-    </div>
-
-    <div class="form-group" formGroupName="shippingInformation">
-      <label for="surname">Surname</label>
-      <input type="text" id="surname" class="form-control" formControlName="surname">
-    </div>
-    <!--<app-shipping-information [group]="myForm.controls.shippingInformation"></app-shipping-information>-->
-    <!--<div formGroupName="shippingInformation">
-      <div class="form-group" [class.has-danger]="myForm.controls.shippingInformation.name.valid">
-        <label class="form-control-label" for="name">Name</label>
-        <input type="text"
-               class="form-control" id="name" placeholder="Your Name"
-               [class.form-control-danger]="!myForm.controls.shippingInformation.name.valid"
-               formControlName="name">
-
-        <div class="form-control-feedback" *ngIf="!myForm.controls.shippingInformation.name.valid">Sorry, this field is mandatory</div>
-      </div>
-
-      <div class="form-group">
-        <label for="name">Surname</label>
-        <input type="text"
-               class="form-control" id="surname" placeholder="Your Surname"
-               formControlName="surname">
-      </div>
-    </div>-->
+    <app-shipping-information [group]="myForm.controls.shippingInformation"></app-shipping-information>
   </div>
 
-  <button type="submit" class="btn btn-lg btn-success" [disabled]="!myForm.valid">Submit</button>
+  <div class="row marketing">
+    <h2>Choose your product</h2>
+    <app-product-information
+      formArrayName="products"
+      [products]="myForm.get('products')"
+      (toogle)="updateActiveProduct($event)">
+    </app-product-information>
+  </div>
+
+  <div class="row marketing">
+    <h2>Your ticket</h2>
+    <app-ticket-information
+      formArrayName="products"
+      [products]="myForm.controls.products">
+    </app-ticket-information>
+  </div>
+  <!--<div formArrayName="products">
+    <div *ngFor="let product of myForm.controls.products.controls; let i=index" class="panel panel-default">
+      <div class="panel-heading">
+        <span>Product {{i + 1}}</span>
+        <span class="glyphicon glyphicon-remove pull-right" *ngIf="myForm.controls.products.controls.length > 1"
+              (click)="removeProduct(i)"></span>
+      </div>
+      <div class="panel-body" [formGroupName]="i">
+        <app-product-size [group]="myForm.controls.products.controls[i]"></app-product-size>
+      </div>
+    </div>
+  </div>
+
+  <div class="margin-20">
+    <a (click)="addProduct()" style="cursor: default">
+      Add another product +
+    </a>
+  </div>-->
+
+  <button type="submit" class="btn btn-lg btn-success" [disabled]="!myForm.valid">Order!</button>
 </form>
 
 

@@ -9,6 +9,8 @@ import {OrderInformation} from "./order-information.model";
 })
 export class OrderInformationComponent implements OnInit {
   myForm: FormGroup;
+  activeProduct: number = 0;
+
 
   // we will use form builder to simplify our syntax
   constructor(private fb: FormBuilder) {
@@ -17,43 +19,22 @@ export class OrderInformationComponent implements OnInit {
   ngOnInit() {
     this.myForm = this.fb.group({
       shippingInformation: this.fb.group({
-        name: ['Herre', Validators.required],
-        surname: ['Torpedo']
+        name: ['', Validators.required],
+        surname: [''],
+        mail: ['', Validators.required],
+        mailConfirmation: ['', Validators.required],
+        phone: ['', Validators.compose([Validators.required])],
+        address: ['', Validators.required],
+        postalCode: ['', Validators.required],
+        city: ['', Validators.required]
       }),
-      /*'mail': ['', Validators.required],
-       'mailConfirmation': ['', Validators.required],
-       'phone': ['', Validators.compose([Validators.required, postalPhoneValidator])],
-       'address': ['', Validators.required],
-       'postalCode': ['', Validators.required],
-       'city': ['', Validators.required]
-       'products': this.fb.array([this.initProduct()])*/
+      products: this.fb.array([])
     });
   }
 
-  /* initProduct() {
-   return this.fb.group({
-   size: ['', Validators.required]//,
-   //compositions: this.fb.array([this.initCompositions()])
-   });
-   }
-
-   initCompositions() {
-   // initialize our products
-   return this.fb.group({
-   composition: ['', Validators.required],
-   });
-   }
-
-   addProduct() {
-   const control = <FormArray>this.myForm.controls['products'];
-   control.push(this.initProduct());
-   }
-
-   removeProduct(index: number) {
-   // remove address from the list
-   const control = <FormArray>this.myForm.controls['products'];
-   control.removeAt(index);
-   }*/
+  private updateActiveProduct(index: number) {
+    this.activeProduct = index;
+  }
 
   save(model: OrderInformation) {
     // call API to save order
